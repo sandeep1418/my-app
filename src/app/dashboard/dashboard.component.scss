@@ -1,0 +1,47 @@
+.dashboard-container {
+  margin: 1.5rem;
+  .user-card {
+    display: flex;
+    border: 1px solid gray;
+    width: 277px;
+    padding: 1rem;
+    box-shadow: 1px 1px 1px 1px gray;
+    border-radius: 10px;
+    margin-right: 24px;
+    margin-bottom: 24px;
+    cursor: pointer;
+
+    .user-image {
+      img {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        margin-right: 10px;
+      }
+    }
+    .user-details {
+      display: grid;
+
+      .user-email {
+        font-size: 12px;
+        color: lightgray;
+      }
+    }
+  }
+
+  .dashboard-admin-container,
+  .dashboard-member-container {
+    display: flex;
+    flex-wrap: wrap;
+  }
+}
+
+#myModal {
+  .field-container {
+    margin-bottom: 10px;
+
+    .field-info {
+      margin-right: 5px;
+    }
+  }
+}

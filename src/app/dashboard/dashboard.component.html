@@ -1,0 +1,82 @@
+<app-header (searchEvent)="receiveSearchText($event)"></app-header>
+<div class="dashboard-container">
+  <h3 class="admin-heading" *ngIf="isAdmin">Administrators</h3>
+  <div class="dashboard-admin-container" *ngIf="isAdmin">
+    <div *ngFor="let data of adminData">
+      <div
+        *ngIf="
+          data.first_name.includes(searchedText) ||
+          data.last_name.includes(searchedText) ||
+          data.email.includes(searchedText)
+        "
+      >
+        <div class="user-card" (click)="openModal(data)">
+          <div class="user-image">
+            <img src="{{ data.img }}" />
+          </div>
+          <div class="user-details">
+            <span class="user-name"
+              >{{ data.first_name }} {{ data.last_name }}</span
+            >
+            <span class="user-email">{{ data.email }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <h3 class="admin-heading">Members</h3>
+  <div class="dashboard-member-container">
+    <div *ngFor="let data of membersData">
+      <div
+        *ngIf="
+          data.first_name.includes(searchedText) ||
+          data.last_name.includes(searchedText) ||
+          data.email.includes(searchedText)
+        "
+      >
+        <div class="user-card">
+          <div class="user-image">
+            <img src="{{ data.img }}" />
+          </div>
+          <div class="user-details">
+            <span class="user-name"
+              >{{ data.first_name }} {{ data.last_name }}</span
+            >
+            <span class="user-email">{{ data.email }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal" id="myModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <!-- Modal body -->
+      <div class="modal-body">
+        <form [formGroup]="myForm" (ngSubmit)="onSubmit()">
+          <div class="field-container">
+            <label for="firstname" class="field-info">First Name:</label>
+            <input type="text" id="firstname" formControlName="firstName" />
+          </div>
+
+          <div class="field-container">
+            <label for="lastname" class="field-info">Last Name:</label>
+            <input type="text" id="lastname" formControlName="lastName" />
+          </div>
+
+          <div class="field-container">
+            <label for="email" class="field-info">Email Adrs:</label>
+            <input type="text" id="email" formControlName="email" />
+          </div>
+
+          <button type="submit" class="btn btn-success" (click)="closeModal()">
+            Submit
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
