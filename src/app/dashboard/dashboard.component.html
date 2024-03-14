@@ -35,7 +35,7 @@
           data.email.includes(searchedText)
         "
       >
-        <div class="user-card">
+        <div class="user-card" (click)="openModal(data)">
           <div class="user-image">
             <img src="{{ data.img }}" />
           </div>
