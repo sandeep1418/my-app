@@ -1,0 +1,9 @@
+<p>parent-app works!</p>
+<div class="items-list-container" *ngIf="items.length;else noitems">
+    <div class="items-container" *ngFor="let item of items">
+        <div class="item-list" [ngStyle]="{'color': item === 'Even' ? 'red' : 'green'}">{{item}}</div>
+    </div>
+</div>
+<ng-template #noitems class="no-data">No Data</ng-template>
+
+<app-child-app [messageFromParent]="parentMessage" (myOutput)="GetChildMessage($event)"></app-child-app>
